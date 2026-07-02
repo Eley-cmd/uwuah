@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uwuah</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="uwuah.css">
+</head>
+<body>
+
+<!-- ============ LOGIN ============ -->
+<div class="login-wrap" id="loginWrap">
+  <div class="login-card">
+    <div class="login-head">
+      <div class="brand">
+        <span class="whisk-mark" aria-hidden="true">
+          <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+            <circle cx="15" cy="15" r="14" fill="#B7CBA3" opacity="0.5"/>
+            <g class="whisk-spin">
+              <line x1="15" y1="22" x2="10" y2="8" stroke="#3F5233" stroke-width="1.6" stroke-linecap="round"/>
+              <line x1="15" y1="22" x2="15" y2="7" stroke="#3F5233" stroke-width="1.6" stroke-linecap="round"/>
+              <line x1="15" y1="22" x2="20" y2="8" stroke="#3F5233" stroke-width="1.6" stroke-linecap="round"/>
+              <circle cx="15" cy="23" r="2.4" fill="#C9A24B"/>
+            </g>
+          </svg>
+        </span>
+        Uwuah
+      </div>
+      <div class="tagline">Welcome to Uwuah!</div>
+      <div class="subtagline">a calm little corner to chat &amp; keep plans</div>
+    </div>
+    <div class="form-error" id="formError"></div>
+    <form id="authForm" novalidate>
+      <div class="field">
+        <label for="usernameInput">Username</label>
+        <input type="text" id="usernameInput" autocomplete="username" placeholder="e.g. mochigreen" required>
+      </div>
+      <div class="field">
+        <label for="passwordInput">Password</label>
+        <input type="password" id="passwordInput" autocomplete="current-password" placeholder="••••••••" required>
+      </div>
+      <button type="submit" class="btn-primary" id="authSubmitBtn">Log in</button>
+    </form>
+    <div class="switch-mode">
+      <span id="switchText">New here?</span>
+      <button type="button" id="switchModeBtn">Create an account</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ APP ============ -->
+<div class="app" id="app">
+  <div class="topbar">
+    <div class="topbar-brand">
+      <span class="whisk-mark" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 30 30" fill="none">
+          <circle cx="15" cy="15" r="14" fill="#B7CBA3" opacity="0.5"/>
+          <line x1="15" y1="22" x2="10" y2="8" stroke="#3F5233" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="15" y1="22" x2="15" y2="7" stroke="#3F5233" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="15" y1="22" x2="20" y2="8" stroke="#3F5233" stroke-width="1.6" stroke-linecap="round"/>
+          <circle cx="15" cy="23" r="2.4" fill="#C9A24B"/>
+        </svg>
+      </span>
+      <span class="brand-text">Uwuah</span>
+    </div>
+
+    <nav class="topnav" aria-label="Main">
+      <button class="topnav-link active" data-tab="wall">
+        <svg class="tnl-icon" viewBox="0 0 20 20" fill="none"><path d="M3 5h14M3 10h14M3 15h9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        Wall
+      </button>
+      <button class="topnav-link" data-tab="chats">
+        <svg class="tnl-icon" viewBox="0 0 20 20" fill="none"><path d="M3 4.5h14a1 1 0 011 1v8a1 1 0 01-1 1H8l-4 3v-3H3a1 1 0 01-1-1v-8a1 1 0 011-1z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        Chats
+        <span class="tnl-badge" id="chatsBadge">0</span>
+      </button>
+      <button class="topnav-link" data-tab="calendar">
+        <svg class="tnl-icon" viewBox="0 0 20 20" fill="none"><rect x="3" y="4.5" width="14" height="12" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M3 8.5h14M7 2.5v3M13 2.5v3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        Calendar
+      </button>
+    </nav>
+
+    <div class="topbar-actions">
+      <button class="btn-ghost" id="accountBtn">
+        <svg class="settings-icon" viewBox="0 0 20 20" fill="none"><path d="M10 12.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" stroke="currentColor" stroke-width="1.6"/><path d="M16.2 12.4c.1-.4.15-.8.15-1.2s-.05-.8-.15-1.2l1.4-1.1a.5.5 0 00.1-.65l-1.3-2.3a.5.5 0 00-.6-.2l-1.65.65a5.4 5.4 0 00-1.05-.6l-.25-1.75a.5.5 0 00-.5-.4h-2.6a.5.5 0 00-.5.4l-.25 1.75c-.38.15-.73.35-1.05.6L6.15 5.75a.5.5 0 00-.6.2l-1.3 2.3a.5.5 0 00.1.65l1.4 1.1c-.1.4-.15.8-.15 1.2s.05.8.15 1.2l-1.4 1.1a.5.5 0 00-.1.65l1.3 2.3a.5.5 0 00.6.2l1.65-.65c.32.25.67.45 1.05.6l.25 1.75a.5.5 0 00.5.4h2.6a.5.5 0 00.5-.4l.25-1.75c.38-.15.73-.35 1.05-.6l1.65.65a.5.5 0 00.6-.2l1.3-2.3a.5.5 0 00-.1-.65l-1.4-1.1z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+        Settings
+      </button>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="hero-avatar" id="heroAvatar"></div>
+    <div>
+      <div class="hero-eyebrow">Welcome to Uwuah!</div>
+      <h1 class="hero-greet">Hello, <span id="greetName">friend</span>!</h1>
+      <p class="hero-sub" id="heroSub">Here's what's steeping in your garden today.</p>
+    </div>
+  </section>
+
+  <div class="layout">
+    <main class="main-panel">
+      <!-- WALL -->
+      <section class="panel-card" id="tab-wall">
+        <h2 class="panel-title">The Wall</h2>
+        <p class="panel-sub">Share a thought — or a photo — with everyone in Uwuah.</p>
+
+        <div class="composer">
+          <div class="avatar" id="composerAvatar"></div>
+          <div class="composer-body">
+            <textarea id="postInput" placeholder="What's steeping on your mind?" rows="2" maxlength="500"></textarea>
+            <div class="composer-preview" id="composerPreview" style="display:none;">
+              <img id="composerPreviewImg" alt="Attached photo preview">
+              <button type="button" id="removePhotoBtn" aria-label="Remove photo">✕</button>
+            </div>
+            <div class="composer-actions">
+              <button type="button" class="btn-attach" id="attachBtn">
+                <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><rect x="2.5" y="4" width="15" height="12" rx="2" stroke="currentColor" stroke-width="1.6"/><circle cx="7" cy="9" r="1.4" fill="currentColor"/><path d="M4 14.5l3.5-3.5 2.5 2.5 3-4 3.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                Photo
+              </button>
+              <input type="file" id="photoInput" accept="image/*" style="display:none;">
+              <button class="btn-post" id="postBtn" disabled>Post</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="wall-list" id="wallList"></div>
+      </section>
+
+      <!-- CHATS -->
+      <section class="panel-card" id="tab-chats" style="display:none;">
+        <h2 class="panel-title">Chats</h2>
+        <p class="panel-sub">Direct messages and group chats, Uwuah-style.</p>
+        <div class="chats-shell" id="chatsShell">
+          <div class="chats-list">
+            <div class="chats-list-head">
+              <h3>Conversations</h3>
+              <button class="btn-newgc" id="newGcBtn" aria-label="New group chat" title="New group chat">+</button>
+            </div>
+            <div class="chats-scroll" id="chatsScroll"></div>
+          </div>
+          <div class="chat-main" id="chatMain">
+            <div class="chat-empty-main">
+              <span class="whisk-mark">
+                <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+                  <circle cx="15" cy="15" r="14" fill="#B7CBA3" opacity="0.5"/>
+                  <line x1="15" y1="22" x2="10" y2="8" stroke="#3F5233" stroke-width="1.6" stroke-linecap="round"/>
+                  <line x1="15" y1="22" x2="15" y2="7" stroke="#3F5233" stroke-width="1.6" stroke-linecap="round"/>
+                  <line x1="15" y1="22" x2="20" y2="8" stroke="#3F5233" stroke-width="1.6" stroke-linecap="round"/>
+                  <circle cx="15" cy="23" r="2.4" fill="#C9A24B"/>
+                </svg>
+              </span>
+              <p><strong>No conversation selected</strong></p>
+              <p>Pick someone from the list, or start a group chat.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CALENDAR -->
+      <section class="panel-card" id="tab-calendar" style="display:none;">
+        <h2 class="panel-title">Calendar</h2>
+        <p class="panel-sub">Pick a day to see or add plans.</p>
+        <div id="calendarContent"></div>
+      </section>
+    </main>
+
+    <aside class="side-panel">
+      <div class="side-title">In the garden</div>
+      <div id="memberList"></div>
+      <div class="side-divider"></div>
+      <div class="side-title">Upcoming</div>
+      <div id="upcomingList"></div>
+    </aside>
+  </div>
+</div>
+
+<!-- ============ MODALS ============ -->
+
+<!-- Settings modal: profile photo, dark mode, logout, delete account -->
+<div class="modal-overlay" id="accountModal">
+  <div class="modal-card">
+    <h3>Settings</h3>
+    <p>Signed in as <strong id="accountModalName"></strong></p>
+
+    <div class="settings-section">
+      <div class="settings-label">Profile photo</div>
+      <div class="avatar-edit-row" id="settingsAvatarRow">
+        <div class="avatar-edit-preview" id="settingsAvatarPreview"></div>
+        <div class="avatar-edit-btns">
+          <button type="button" class="btn-small" id="changeProfilePhotoBtn">Change photo</button>
+          <button type="button" class="btn-small danger" id="removeProfilePhotoBtn">Remove photo</button>
+        </div>
+      </div>
+      <input type="file" id="profilePhotoInput" accept="image/*" style="display:none;">
+    </div>
+
+    <div class="settings-divider"></div>
+
+    <div class="settings-section" style="margin-bottom:4px;">
+      <div class="settings-label">Appearance</div>
+      <div class="theme-toggle-row">
+        <div class="ttr-text">
+          <strong>Dark mode</strong>
+          <span>Easier on the eyes in low light</span>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="darkModeToggle">
+          <span class="switch-track"></span>
+        </label>
+      </div>
+    </div>
+
+    <div class="settings-divider"></div>
+
+    <button class="account-menu-item" id="accountLogoutBtn">Log out</button>
+    <button class="account-menu-item danger" id="accountDeleteBtn">Delete account</button>
+    <div class="modal-actions" style="margin-top:14px;">
+      <button id="accountCloseBtn">Close</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="deleteAccountModal">
+  <div class="modal-card">
+    <h3>Delete your account?</h3>
+    <p>This removes your account, every post and photo you've shared, every message you've sent, and takes you out of any group chats. It can't be undone.</p>
+    <div class="modal-actions">
+      <button id="cancelDeleteAccountBtn">Cancel</button>
+      <button class="btn-confirm-danger" id="confirmDeleteAccountBtn">Delete account</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="newGcModal">
+  <div class="modal-card">
+    <h3>New group chat</h3>
+    <p>Name it and pick who's in.</p>
+    <div class="field">
+      <input type="text" id="gcNameInput" placeholder="Group name" maxlength="40">
+    </div>
+    <div class="member-picker" id="gcMemberPicker"></div>
+    <div class="form-error" id="gcError"></div>
+    <div class="modal-actions">
+      <button id="cancelGcBtn">Cancel</button>
+      <button class="btn-confirm-primary" id="createGcBtn">Create</button>
+    </div>
+  </div>
+</div>
+
+<!-- Group chat settings: rename, change photo, delete -->
+<div class="modal-overlay" id="gcSettingsModal">
+  <div class="modal-card">
+    <h3>Group chat settings</h3>
+
+    <div class="settings-section">
+      <div class="settings-label">Group photo</div>
+      <div class="avatar-edit-row" id="gcSettingsAvatarRow">
+        <div class="avatar-edit-preview" id="gcSettingsAvatarPreview"></div>
+        <div class="avatar-edit-btns">
+          <button type="button" class="btn-small" id="changeGcPhotoBtn">Change photo</button>
+          <button type="button" class="btn-small danger" id="removeGcPhotoBtn">Remove photo</button>
+        </div>
+      </div>
+      <input type="file" id="gcPhotoInput" accept="image/*" style="display:none;">
+    </div>
+
+    <div class="settings-section">
+      <div class="settings-label">Group name</div>
+      <div class="field" style="margin-bottom:0;">
+        <input type="text" id="gcRenameInput" maxlength="40">
+      </div>
+    </div>
+
+    <div class="form-error" id="gcSettingsError"></div>
+
+    <div class="modal-actions">
+      <button id="cancelGcSettingsBtn">Cancel</button>
+      <button class="btn-confirm-primary" id="saveGcSettingsBtn">Save</button>
+    </div>
+    <button class="account-menu-item danger" id="deleteGcFromSettingsBtn" style="margin-top:10px;">Delete this group chat</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="deleteGcModal">
+  <div class="modal-card">
+    <h3>Delete this group chat?</h3>
+    <p id="deleteGcText">This removes the conversation and all its messages for everyone. It can't be undone.</p>
+    <div class="modal-actions">
+      <button id="cancelDeleteGcBtn">Cancel</button>
+      <button class="btn-confirm-danger" id="confirmDeleteGcBtn">Delete</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------------- Storage keys ---------------- */
+  const K_USERS = 'uwuah_users';
+  const K_SESSION = 'uwuah_session';
+  const K_WALL = 'uwuah_wall';
+  const K_EVENTS = 'uwuah_events';
+  const K_CHATS = 'uwuah_chats';       // { chatId: {id, type:'dm'|'group', name, photo, members:[username], createdBy, ts} }
+  const K_MESSAGES = 'uwuah_messages'; // { chatId: [{id, author, text, ts}] }
+  const K_THEME = 'uwuah_theme';       // 'light' | 'dark'
+
+  /* ---------------- Helpers ---------------- */
+  const $ = sel => document.querySelector(sel);
+  const $$ = sel => Array.from(document.querySelectorAll(sel));
+  function load(key, fallback){ try{ const raw = localStorage.getItem(key); return raw ? JSON.parse(raw) : fallback; }catch(e){ return fallback; } }
+  function save(key, val){ localStorage.setItem(key, JSON.stringify(val)); }
+
+  const AVATAR_COLORS = ['#6B8E5A','#C9A24B','#A8654B','#3F5233','#86A671','#8C6D4F'];
+  function colorFor(name){
+    let hash = 0;
+    for(let i=0;i<name.length;i++){ hash = name.charCodeAt(i) + ((hash<<5)-hash); }
+    return AVATAR_COLORS[Math.abs(hash) % AVATAR_COLORS.length];
+  }
+  function initials(name){ return name.trim().slice(0,2).toUpperCase(); }
+  function escapeHtml(str){ const div = document.createElement('div'); div.textContent = str; return div.innerHTML; }
+  function timeAgo(ts){
+    const diff = Math.floor((Date.now()-ts)/1000);
+    if(diff < 60) return 'just now';
+    if(diff < 3600) return Math.floor(diff/60)+'m ago';
+    if(diff < 86400) return Math.floor(diff/3600)+'h ago';
+    return new Date(ts).toLocaleDateString(undefined,{month:'short',day:'numeric'});
+  }
+  function shortTime(ts){ return new Date(ts).toLocaleTimeString(undefined,{hour:'numeric',minute:'2-digit'}); }
+  function pad2(n){ return String(n).padStart(2,'0'); }
+  function dateKey(y,m,d){ return `${y}-${pad2(m+1)}-${pad2(d)}`; }
+  function fmtTime(t){ const [h,m]=t.split(':').map(Number); const ap=h>=12?'PM':'AM'; const h12=((h+11)%12)+1; return `${h12}:${pad2(m)} ${ap}`; }
+  function uid(prefix){ return prefix+Date.now()+Math.random().toString(36).slice(2,7); }
+
+  function avatarHtml(name, sizeClass){
+    const av = users[name.toLowerCase()];
+    if(av && av.photo){ return `<img src="${av.photo}" alt="${escapeHtml(name)}">`; }
+    return escapeHtml(initials(name));
+  }
+  function avatarStyle(name){
+    const av = users[name.toLowerCase()];
+    return (av && av.photo) ? '' : `background:${colorFor(name)}`;
+  }
+  function compressImage(file, maxDim, quality){
+    return new Promise((resolve, reject) => {
+      if(!file.type.startsWith('image/')){ reject(new Error('not an image')); return; }
+      const reader = new FileReader();
+      reader.onerror = () => reject(reader.error);
+      reader.onload = () => {
+        const img = new Image();
+        img.onerror = () => reject(new Error('bad image'));
+        img.onload = () => {
+          let { width, height } = img;
+          if(width > height && width > maxDim){ height = Math.round(height * (maxDim/width)); width = maxDim; }
+          else if(height > maxDim){ width = Math.round(width * (maxDim/height)); height = maxDim; }
+          const canvas = document.createElement('canvas');
+          canvas.width = width; canvas.height = height;
+          canvas.getContext('2d').drawImage(img, 0, 0, width, height);
+          resolve(canvas.toDataURL('image/jpeg', quality));
+        };
+        img.src = reader.result;
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  /* ---------------- State ---------------- */
+  let users = load(K_USERS, {});
+  let session = load(K_SESSION, null);
+  let wall = load(K_WALL, []);
+  let events = load(K_EVENTS, {});
+  let chats = load(K_CHATS, {});
+  let messages = load(K_MESSAGES, {});
+  let isSignupMode = false;
+  let calCursor = new Date();
+  let selectedDateKey = null;
+  let calendarLoaded = false;
+  let activeChatId = null;
+  let pendingPhoto = null; // base64 for wall composer
+
+  /* ---------------- Dark mode ---------------- */
+  function applyTheme(theme){
+    document.documentElement.setAttribute('data-theme', theme === 'dark' ? 'dark' : 'light');
+    const toggle = $('#darkModeToggle');
+    if(toggle) toggle.checked = (theme === 'dark');
+  }
+  applyTheme(load(K_THEME, 'light'));
+  document.addEventListener('change', (e) => {
+    if(e.target && e.target.id === 'darkModeToggle'){
+      const theme = e.target.checked ? 'dark' : 'light';
+      save(K_THEME, theme);
+      applyTheme(theme);
+    }
+  });
+
+  /* ---------------- Click-to-reveal avatar edit buttons ----------------
+     Used by both the profile Settings modal and the group chat settings
+     modal: clicking the round avatar preview toggles a small panel with
+     "Change photo" / "Remove photo". Clicking those buttons themselves
+     doesn't re-toggle the row (see the closest() guard below). */
+  function bindAvatarEditToggle(rowId){
+    const row = document.getElementById(rowId);
+    if(!row || row._bound) return;
+    row._bound = true;
+    row.addEventListener('click', (e) => {
+      if(e.target.closest('.avatar-edit-btns')) return;
+      row.classList.toggle('is-editing');
+    });
+  }
+
+  /* ================= AUTH ================= */
+  const loginWrap = $('#loginWrap');
+  const appEl = $('#app');
+  const authForm = $('#authForm');
+  const usernameInput = $('#usernameInput');
+  const passwordInput = $('#passwordInput');
+  const formError = $('#formError');
+  const switchModeBtn = $('#switchModeBtn');
+  const switchText = $('#switchText');
+  const authSubmitBtn = $('#authSubmitBtn');
+
+  function showError(msg){ formError.textContent = msg; formError.classList.add('show'); }
+  function clearError(){ formError.textContent=''; formError.classList.remove('show'); }
+
+  switchModeBtn.addEventListener('click', () => {
+    isSignupMode = !isSignupMode;
+    clearError();
+    if(isSignupMode){
+      authSubmitBtn.textContent = 'Create account';
+      switchText.textContent = 'Already have an account?';
+      switchModeBtn.textContent = 'Log in';
+      passwordInput.setAttribute('autocomplete','new-password');
+    }else{
+      authSubmitBtn.textContent = 'Log in';
+      switchText.textContent = 'New here?';
+      switchModeBtn.textContent = 'Create an account';
+      passwordInput.setAttribute('autocomplete','current-password');
+    }
+  });
+
+  authForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    clearError();
+    const uname = usernameInput.value.trim();
+    const pass = passwordInput.value;
+    if(uname.length < 2){ showError('Username needs at least 2 characters.'); return; }
+    if(pass.length < 4){ showError('Password needs at least 4 characters.'); return; }
+
+    if(isSignupMode){
+      if(users[uname.toLowerCase()]){ showError('That username is already taken.'); return; }
+      users[uname.toLowerCase()] = { display: uname, password: pass, joined: Date.now(), photo:null };
+      save(K_USERS, users);
+      logIn(uname);
+    }else{
+      const rec = users[uname.toLowerCase()];
+      if(!rec || rec.password !== pass){ showError('Username or password is incorrect.'); return; }
+      logIn(rec.display);
+    }
+  });
+
+  function logIn(displayName){
+    session = displayName; save(K_SESSION, session);
+    authForm.reset(); clearError();
+    enterApp();
+  }
+  function doLogout(){
+    session = null; localStorage.removeItem(K_SESSION);
+    appEl.classList.remove('active'); loginWrap.style.display='flex';
+    usernameInput.focus();
+  }
+
+  function enterApp(){
+    loginWrap.style.display = 'none';
+    appEl.classList.add('active');
+
+    $('#greetName').textContent = session;
+    const heroAv = $('#heroAvatar');
+    heroAv.style.cssText = avatarStyle(session);
+    heroAv.innerHTML = avatarHtml(session);
+    $('#heroSub').textContent = new Date().toLocaleDateString(undefined,{ weekday:'long', month:'long', day:'numeric' });
+
+    const composerAv = $('#composerAvatar');
+    composerAv.style.cssText = avatarStyle(session);
+    composerAv.innerHTML = avatarHtml(session);
+
+    renderMembers();
+    renderUpcoming();
+    updateChatsBadge();
+
+    showWallSkeleton();
+    setTimeout(renderWall, 800);
+  }
+
+  /* ================= TABS ================= */
+  $$('.topnav-link').forEach(btn => {
+    btn.addEventListener('click', () => {
+      $$('.topnav-link').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const tab = btn.dataset.tab;
+      $('#tab-wall').style.display = tab === 'wall' ? 'block' : 'none';
+      $('#tab-chats').style.display = tab === 'chats' ? 'block' : 'none';
+      $('#tab-calendar').style.display = tab === 'calendar' ? 'block' : 'none';
+
+      if(tab === 'calendar' && !calendarLoaded){
+        showCalendarSkeleton();
+        setTimeout(() => { calendarLoaded = true; buildCalendarDom(); renderCalendar(); }, 650);
+      }
+      if(tab === 'chats'){ renderChatsList(); }
+    });
+  });
+
+  /* ================= SKELETONS ================= */
+  function showWallSkeleton(){
+    const widths = [['w30','w90','w60'], ['w30','w60'], ['w30','w90','w90','w30']];
+    $('#wallList').innerHTML = widths.map(lines => `
+      <div class="skeleton-post">
+        <div class="skeleton-avatar shimmer"></div>
+        <div class="skeleton-lines">${lines.map(w => `<div class="skeleton-line shimmer ${w}"></div>`).join('')}</div>
+      </div>`).join('');
+  }
+  function showCalendarSkeleton(){
+    let cells=''; for(let i=0;i<35;i++){ cells += `<div class="skeleton-cal-cell shimmer"></div>`; }
+    $('#calendarContent').innerHTML = `<div class="skeleton-cal-header"><div class="shimmer"></div></div><div class="cal-grid">${cells}</div>`;
+  }
+
+  /* ================= WALL (with photo+caption) ================= */
+  const postInput = $('#postInput');
+  const postBtn = $('#postBtn');
+  const attachBtn = $('#attachBtn');
+  const photoInput = $('#photoInput');
+  const composerPreview = $('#composerPreview');
+  const composerPreviewImg = $('#composerPreviewImg');
+  const removePhotoBtn = $('#removePhotoBtn');
+
+  function updatePostBtnState(){
+    postBtn.disabled = postInput.value.trim().length === 0 && !pendingPhoto;
+  }
+  postInput.addEventListener('input', () => {
+    updatePostBtnState();
+    postInput.style.height = 'auto';
+    postInput.style.height = Math.min(postInput.scrollHeight, 140) + 'px';
+  });
+  attachBtn.addEventListener('click', () => photoInput.click());
+  photoInput.addEventListener('change', () => {
+    const file = photoInput.files[0];
+    if(!file) return;
+    compressImage(file, 900, 0.72).then(dataUrl => {
+      pendingPhoto = dataUrl;
+      composerPreviewImg.src = dataUrl;
+      composerPreview.style.display = 'inline-block';
+      updatePostBtnState();
+    }).catch(() => { showTransientNotice('Could not read that photo — try another one.'); });
+    photoInput.value = '';
+  });
+  removePhotoBtn.addEventListener('click', () => {
+    pendingPhoto = null;
+    composerPreview.style.display = 'none';
+    updatePostBtnState();
+  });
+
+  postBtn.addEventListener('click', () => {
+    const text = postInput.value.trim();
+    if(!text && !pendingPhoto) return;
+    try{
+      wall.unshift({ id: uid('p'), author: session, text, photo: pendingPhoto, ts: Date.now() });
+      save(K_WALL, wall);
+    }catch(e){
+      showTransientNotice("Storage is full — try a smaller photo or delete some old posts.");
+      wall.shift();
+      return;
+    }
+    postInput.value = ''; postInput.style.height = 'auto';
+    pendingPhoto = null; composerPreview.style.display = 'none';
+    updatePostBtnState();
+    renderWall();
+  });
+  postInput.addEventListener('keydown', (e) => { if(e.key==='Enter' && (e.metaKey||e.ctrlKey)){ e.preventDefault(); postBtn.click(); } });
+
+  function renderWall(){
+    const wallList = $('#wallList');
+    if(wall.length === 0){
+      wallList.innerHTML = `
+        <div class="empty-state">
+          <span class="whisk-mark">
+            <svg width="34" height="34" viewBox="0 0 30 30" fill="none">
+              <circle cx="15" cy="15" r="14" fill="#B7CBA3" opacity="0.5"/>
+              <line x1="15" y1="22" x2="10" y2="8" stroke="#3F5233" stroke-width="1.6" stroke-linecap="round"/>
+              <line x1="15" y1="22" x2="15" y2="7" stroke="#3F5233" stroke-width="1.6" stroke-linecap="round"/>
+              <line x1="15" y1="22" x2="20" y2="8" stroke="#3F5233" stroke-width="1.6" stroke-linecap="round"/>
+              <circle cx="15" cy="23" r="2.4" fill="#C9A24B"/>
+            </svg>
+          </span>
+          <p><strong>The wall is quiet.</strong></p>
+          <p>Be the first to post something.</p>
+        </div>`;
+      return;
+    }
+    wallList.innerHTML = wall.map(post => `
+      <div class="post" data-id="${post.id}">
+        <div class="avatar" style="${avatarStyle(post.author)}">${avatarHtml(post.author)}</div>
+        <div class="post-body">
+          <div class="post-head">
+            <span class="post-author">${escapeHtml(post.author)}</span>
+            <span class="post-time">${timeAgo(post.ts)}</span>
+          </div>
+          ${post.text ? `<div class="post-text">${escapeHtml(post.text)}</div>` : ''}
+          ${post.photo ? `<div class="post-photo"><img src="${post.photo}" alt="Photo shared by ${escapeHtml(post.author)}"></div>` : ''}
+          ${post.author === session ? `<button class="post-del" data-id="${post.id}">Delete</button>` : ''}
+        </div>
+      </div>
+    `).join('');
+
+    $$('.post-del').forEach(btn => btn.addEventListener('click', () => {
+      wall = wall.filter(p => p.id !== btn.dataset.id);
+      save(K_WALL, wall);
+      renderWall();
+    }));
+  }
+
+  function showTransientNotice(msg){
+    let n = document.getElementById('transientNotice');
+    if(!n){
+      n = document.createElement('div'); n.id = 'transientNotice';
+      n.style.cssText = 'position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#3F5233;color:#FFFDF7;padding:11px 18px;border-radius:10px;font-size:13px;font-weight:600;z-index:200;box-shadow:0 8px 20px rgba(0,0,0,0.2);';
+      document.body.appendChild(n);
+    }
+    n.textContent = msg; n.style.display = 'block';
+    clearTimeout(n._t); n._t = setTimeout(() => { n.style.display='none'; }, 3200);
+  }
+
+  /* ================= MEMBERS ================= */
+  function renderMembers(){
+    const list = Object.values(users);
+    $('#memberList').innerHTML = list.map(u => `
+      <div class="member-item">
+        <div class="avatar" style="${avatarStyle(u.display)}">${avatarHtml(u.display)}</div>
+        <span class="member-name">${escapeHtml(u.display)}</span>
+        ${u.display === session ? '<span class="member-you">YOU</span>' : ''}
+      </div>
+    `).join('') || '<p class="no-upcoming">No members yet.</p>';
+  }
+
+  function refreshMyAvatarEverywhere(){
+    const heroAv = $('#heroAvatar');
+    heroAv.style.cssText = avatarStyle(session);
+    heroAv.innerHTML = avatarHtml(session);
+    const composerAv = $('#composerAvatar');
+    composerAv.style.cssText = avatarStyle(session);
+    composerAv.innerHTML = avatarHtml(session);
+    renderMembers();
+    renderWall();
+    if($('#tab-chats').style.display !== 'none'){ renderChatsList(); }
+  }
+
+  /* ================= SETTINGS MODAL (profile photo, dark mode, logout, delete) ================= */
+  const accountModal = $('#accountModal');
+  const deleteAccountModal = $('#deleteAccountModal');
+  const profilePhotoInput = $('#profilePhotoInput');
+
+  function refreshSettingsAvatarPreview(){
+    const box = $('#settingsAvatarPreview');
+    box.style.cssText = avatarStyle(session);
+    box.innerHTML = avatarHtml(session);
+  }
+
+  $('#accountBtn').addEventListener('click', () => {
+    $('#accountModalName').textContent = session;
+    refreshSettingsAvatarPreview();
+    $('#settingsAvatarRow').classList.remove('is-editing');
+    bindAvatarEditToggle('settingsAvatarRow');
+    accountModal.classList.add('show');
+  });
+  $('#accountCloseBtn').addEventListener('click', () => accountModal.classList.remove('show'));
+  accountModal.addEventListener('click', (e) => { if(e.target === accountModal) accountModal.classList.remove('show'); });
+  $('#accountLogoutBtn').addEventListener('click', () => { accountModal.classList.remove('show'); doLogout(); });
+  $('#accountDeleteBtn').addEventListener('click', () => {
+    accountModal.classList.remove('show');
+    deleteAccountModal.classList.add('show');
+  });
+  $('#cancelDeleteAccountBtn').addEventListener('click', () => deleteAccountModal.classList.remove('show'));
+  $('#confirmDeleteAccountBtn').addEventListener('click', () => {
+    deleteCurrentAccount();
+    deleteAccountModal.classList.remove('show');
+  });
+
+  $('#changeProfilePhotoBtn').addEventListener('click', () => profilePhotoInput.click());
+  profilePhotoInput.addEventListener('change', () => {
+    const file = profilePhotoInput.files[0];
+    if(!file) return;
+    compressImage(file, 400, 0.8).then(dataUrl => {
+      users[session.toLowerCase()].photo = dataUrl;
+      save(K_USERS, users);
+      refreshSettingsAvatarPreview();
+      refreshMyAvatarEverywhere();
+    }).catch(() => showTransientNotice('Could not read that photo — try another one.'));
+    profilePhotoInput.value = '';
+  });
+  $('#removeProfilePhotoBtn').addEventListener('click', () => {
+    users[session.toLowerCase()].photo = null;
+    save(K_USERS, users);
+    refreshSettingsAvatarPreview();
+    refreshMyAvatarEverywhere();
+  });
+
+  function deleteCurrentAccount(){
+    const uname = session;
+    const key = uname.toLowerCase();
+
+    wall = wall.filter(p => p.author !== uname);
+    save(K_WALL, wall);
+
+    Object.keys(events).forEach(dk => {
+      events[dk] = events[dk].filter(ev => ev.author !== uname);
+      if(events[dk].length === 0) delete events[dk];
+    });
+    save(K_EVENTS, events);
+
+    Object.keys(chats).forEach(cid => {
+      const chat = chats[cid];
+      if(chat.type === 'dm'){
+        if(chat.members.includes(uname)){
+          delete chats[cid];
+          delete messages[cid];
+        }
+      }else{
+        chat.members = chat.members.filter(m => m !== uname);
+        if(messages[cid]){ messages[cid] = messages[cid].filter(m => m.author !== uname); }
+        if(chat.members.length === 0){ delete chats[cid]; delete messages[cid]; }
+      }
+    });
+    save(K_CHATS, chats);
+    save(K_MESSAGES, messages);
+
+    delete users[key];
+    save(K_USERS, users);
+
+    doLogout();
+    showTransientNotice('Your account and its content have been removed.');
+  }
+
+  /* ================= CALENDAR ================= */
+  const MONTH_NAMES = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const DOW = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+  function buildCalendarDom(){
+    $('#calendarContent').innerHTML = `
+      <div class="cal-header">
+        <button class="cal-nav-btn" id="prevMonthBtn" aria-label="Previous month">‹</button>
+        <div class="cal-month-label" id="calMonthLabel"></div>
+        <button class="cal-nav-btn" id="nextMonthBtn" aria-label="Next month">›</button>
+      </div>
+      <div class="cal-grid" id="calGrid"></div>
+      <div class="cal-day-panel">
+        <div class="cal-day-title" id="calDayTitle">Select a day</div>
+        <form class="event-form" id="eventForm">
+          <input type="text" name="title" placeholder="Event title" maxlength="60" required>
+          <input type="time" name="time" required>
+          <button type="submit" class="btn-post">Add</button>
+        </form>
+        <div class="event-list" id="eventList"></div>
+      </div>`;
+    $('#prevMonthBtn').addEventListener('click', () => { calCursor.setMonth(calCursor.getMonth()-1); renderCalendar(); });
+    $('#nextMonthBtn').addEventListener('click', () => { calCursor.setMonth(calCursor.getMonth()+1); renderCalendar(); });
+    $('#eventForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      if(!selectedDateKey) return;
+      const form = e.target;
+      const title = form.title.value.trim();
+      const time = form.time.value;
+      if(!title || !time) return;
+      if(!events[selectedDateKey]) events[selectedDateKey] = [];
+      events[selectedDateKey].push({ id: uid('e'), title, time, author: session });
+      save(K_EVENTS, events);
+      form.reset();
+      renderCalendar();
+      renderUpcoming();
+    });
+  }
+
+  function renderCalendar(){
+    const y = calCursor.getFullYear(), m = calCursor.getMonth();
+    $('#calMonthLabel').textContent = `${MONTH_NAMES[m]} ${y}`;
+    const firstDow = new Date(y, m, 1).getDay();
+    const daysInMonth = new Date(y, m+1, 0).getDate();
+    const today = new Date();
+    const todayKey = dateKey(today.getFullYear(), today.getMonth(), today.getDate());
+
+    let html = DOW.map(d => `<div class="cal-dow">${d}</div>`).join('');
+    for(let i=0;i<firstDow;i++){ html += `<div class="cal-cell pad"></div>`; }
+    for(let d=1; d<=daysInMonth; d++){
+      const key = dateKey(y, m, d);
+      const dayEvents = events[key] || [];
+      const classes = ['cal-cell'];
+      if(key === todayKey) classes.push('today');
+      if(dayEvents.length) classes.push('has-events');
+      if(key === selectedDateKey) classes.push('selected');
+      html += `<div class="${classes.join(' ')}" data-key="${key}">
+        <span class="cal-daynum">${d}</span>
+        <div class="cal-dots">${dayEvents.slice(0,4).map(()=>'<span></span>').join('')}</div>
+      </div>`;
+    }
+    $('#calGrid').innerHTML = html;
+    $$('.cal-cell:not(.pad)').forEach(cell => cell.addEventListener('click', () => { selectedDateKey = cell.dataset.key; renderCalendar(); }));
+    if(!selectedDateKey){ selectedDateKey = todayKey; }
+    renderEventPanel();
+  }
+
+  function renderEventPanel(){
+    const calDayTitle = $('#calDayTitle'), eventList = $('#eventList');
+    if(!selectedDateKey){ calDayTitle.textContent = 'Select a day'; eventList.innerHTML=''; return; }
+    const [y,m,d] = selectedDateKey.split('-').map(Number);
+    calDayTitle.textContent = new Date(y, m-1, d).toLocaleDateString(undefined, { weekday:'long', month:'long', day:'numeric' });
+    const dayEvents = (events[selectedDateKey] || []).slice().sort((a,b) => a.time.localeCompare(b.time));
+    if(dayEvents.length === 0){
+      eventList.innerHTML = `<p class="no-upcoming">No plans yet for this day.</p>`;
+    }else{
+      eventList.innerHTML = dayEvents.map(ev => `
+        <div class="event-item" data-id="${ev.id}">
+          <span class="event-time">${fmtTime(ev.time)}</span>
+          <span class="event-title">${escapeHtml(ev.title)}</span>
+          <span class="event-author">${escapeHtml(ev.author)}</span>
+          ${ev.author === session ? `<button class="event-del" data-id="${ev.id}" aria-label="Delete event">✕</button>` : ''}
+        </div>`).join('');
+      $$('.event-del').forEach(btn => btn.addEventListener('click', () => {
+        events[selectedDateKey] = (events[selectedDateKey]||[]).filter(ev => ev.id !== btn.dataset.id);
+        if(events[selectedDateKey].length === 0) delete events[selectedDateKey];
+        save(K_EVENTS, events);
+        renderCalendar(); renderUpcoming();
+      }));
+    }
+  }
+
+  function renderUpcoming(){
+    const todayStr = dateKey(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
+    const upcoming = [];
+    Object.keys(events).sort().forEach(key => { if(key >= todayStr){ events[key].forEach(ev => upcoming.push({ key, ...ev })); } });
+    upcoming.sort((a,b) => (a.key+a.time).localeCompare(b.key+b.time));
+    const top = upcoming.slice(0,6);
+    if(top.length === 0){ $('#upcomingList').innerHTML = '<p class="no-upcoming">Nothing on the calendar yet.</p>'; return; }
+    $('#upcomingList').innerHTML = top.map(ev => {
+      const [y,m,d] = ev.key.split('-').map(Number);
+      const label = new Date(y,m-1,d).toLocaleDateString(undefined,{month:'short',day:'numeric'});
+      return `<div class="upcoming-item"><div class="upcoming-date">${label} · ${fmtTime(ev.time)}</div><div class="upcoming-title">${escapeHtml(ev.title)}</div></div>`;
+    }).join('');
+  }
+
+  /* ================= CHATS (Messenger-style: DMs + group chats) ================= */
+  function myChatIds(){
+    return Object.keys(chats).filter(cid => chats[cid].members.includes(session))
+      .sort((a,b) => lastMsgTs(b) - lastMsgTs(a));
+  }
+  function lastMsgTs(cid){
+    const list = messages[cid] || [];
+    return list.length ? list[list.length-1].ts : (chats[cid] ? chats[cid].ts : 0);
+  }
+  function chatDisplayName(chat){
+    if(chat.type === 'group') return chat.name;
+    const other = chat.members.find(m => m !== session);
+    return other || chat.members[0];
+  }
+  function groupAvatarHtml(chat){
+    if(chat.photo){ return `<div class="gc-avatar"><img src="${chat.photo}" alt="${escapeHtml(chat.name)}"></div>`; }
+    return `<div class="gc-avatar">${escapeHtml(chat.name.slice(0,2).toUpperCase())}</div>`;
+  }
+  function updateChatsBadge(){
+    const count = myChatIds().length;
+    const badge = $('#chatsBadge');
+    badge.textContent = count;
+    badge.classList.toggle('show', count > 0);
+  }
+
+  function findOrCreateDm(otherUser){
+    const existing = Object.values(chats).find(c => c.type==='dm' && c.members.includes(session) && c.members.includes(otherUser));
+    if(existing) return existing.id;
+    const id = uid('c');
+    chats[id] = { id, type:'dm', name:null, photo:null, members:[session, otherUser], createdBy: session, ts: Date.now() };
+    save(K_CHATS, chats);
+    return id;
+  }
+
+  function renderChatsList(){
+    updateChatsBadge();
+    const ids = myChatIds();
+    const scroll = $('#chatsScroll');
+
+    const otherMembers = Object.values(users).map(u=>u.display).filter(d => d !== session);
+    const dmPartners = new Set(ids.filter(id => chats[id].type==='dm').map(id => chatDisplayName(chats[id])));
+    const startable = otherMembers.filter(d => !dmPartners.has(d));
+
+    let html = '';
+    if(ids.length === 0 && startable.length === 0){
+      html = `<div class="chat-empty-list">No one else has joined Uwuah yet.</div>`;
+    }else{
+      html += ids.map(cid => {
+        const chat = chats[cid];
+        const name = chatDisplayName(chat);
+        const list = messages[cid] || [];
+        const last = list[list.length-1];
+        const preview = last ? (last.author===session ? 'You: ' : '') + last.text : (chat.type==='group' ? 'Group chat created' : 'Say hello 👋');
+        const isActive = cid === activeChatId;
+        const avatarInner = chat.type==='group' ? groupAvatarHtml(chat) : `<div class="avatar" style="${avatarStyle(name)}">${avatarHtml(name)}</div>`;
+        return `<button class="chat-row ${isActive?'active':''}" data-cid="${cid}">
+          <div class="chat-row-avatar">${avatarInner}</div>
+          <div style="min-width:0;flex:1;">
+            <div class="chat-row-name">${escapeHtml(name)}</div>
+            <div class="chat-row-preview">${escapeHtml(preview)}</div>
+          </div>
+          <div class="chat-row-meta"><div class="chat-row-time">${last ? shortTime(last.ts) : ''}</div></div>
+        </button>`;
+      }).join('');
+      html += startable.map(name => `
+        <button class="chat-row" data-start="${escapeHtml(name)}">
+          <div class="chat-row-avatar"><div class="avatar" style="${avatarStyle(name)}">${avatarHtml(name)}</div></div>
+          <div style="min-width:0;flex:1;">
+            <div class="chat-row-name">${escapeHtml(name)}</div>
+            <div class="chat-row-preview">Start a conversation</div>
+          </div>
+        </button>`).join('');
+    }
+    scroll.innerHTML = html;
+
+    $$('.chat-row[data-cid]').forEach(row => row.addEventListener('click', () => openChat(row.dataset.cid)));
+    $$('.chat-row[data-start]').forEach(row => row.addEventListener('click', () => {
+      const cid = findOrCreateDm(row.dataset.start);
+      renderChatsList();
+      openChat(cid);
+    }));
+
+    if(activeChatId && chats[activeChatId]) renderChatMain(activeChatId);
+  }
+
+  function openChat(cid){
+    activeChatId = cid;
+    document.documentElement.style.setProperty('--chats-list-display','none');
+    document.documentElement.style.setProperty('--chat-main-display','flex');
+    renderChatsList();
+    renderChatMain(cid);
+  }
+
+  function renderChatMain(cid){
+    const chat = chats[cid];
+    const main = $('#chatMain');
+    if(!chat){ activeChatId = null; return; }
+    const name = chatDisplayName(chat);
+    const isGroup = chat.type === 'group';
+    const list = (messages[cid] || []);
+
+    main.innerHTML = `
+      <div class="chat-main-head">
+        <button class="icon-btn" id="backToListBtn" aria-label="Back to conversations" style="display:none;">‹</button>
+        ${isGroup ? groupAvatarHtml(chat) : `<div class="avatar" style="${avatarStyle(name)}">${avatarHtml(name)}</div>`}
+        <div class="${isGroup ? 'chat-main-title-wrap' : ''}" id="chatMainTitleWrap">
+          <div class="chat-main-title">${escapeHtml(name)}</div>
+          ${isGroup ? `<div class="chat-main-sub">${chat.members.length} member${chat.members.length===1?'':'s'} · tap to edit</div>` : ''}
+        </div>
+        <div class="chat-main-actions">
+          ${isGroup ? `<button class="icon-btn" id="gcSettingsBtn" aria-label="Group chat settings" title="Group chat settings">
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M10 12.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" stroke="currentColor" stroke-width="1.6"/><path d="M16.2 12.4c.1-.4.15-.8.15-1.2s-.05-.8-.15-1.2l1.4-1.1a.5.5 0 00.1-.65l-1.3-2.3a.5.5 0 00-.6-.2l-1.65.65a5.4 5.4 0 00-1.05-.6l-.25-1.75a.5.5 0 00-.5-.4h-2.6a.5.5 0 00-.5.4l-.25 1.75c-.38.15-.73.35-1.05.6L6.15 5.75a.5.5 0 00-.6.2l-1.3 2.3a.5.5 0 00.1.65l1.4 1.1c-.1.4-.15.8-.15 1.2s.05.8.15 1.2l-1.4 1.1a.5.5 0 00-.1.65l1.3 2.3a.5.5 0 00.6.2l1.65-.65c.32.25.67.45 1.05.6l.25 1.75a.5.5 0 00.5.4h2.6a.5.5 0 00.5-.4l.25-1.75c.38-.15.73-.35 1.05-.6l1.65.65a.5.5 0 00.6-.2l1.3-2.3a.5.5 0 00-.1-.65l-1.4-1.1z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+          </button>` : ''}
+        </div>
+      </div>
+      <div class="chat-messages" id="chatMessages"></div>
+      <form class="chat-composer" id="chatComposerForm">
+        <input type="text" id="chatMsgInput" placeholder="Write a message…" maxlength="500" autocomplete="off">
+        <button type="submit" class="btn-send" id="chatSendBtn" aria-label="Send" disabled>
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M3 10l14-7-5 14-2.5-5.5L3 10z" fill="currentColor"/></svg>
+        </button>
+      </form>`;
+
+    const msgsEl = $('#chatMessages');
+    if(list.length === 0){
+      msgsEl.innerHTML = `<div class="chat-empty-main" style="flex:none;padding:30px 10px;"><p><strong>No messages yet.</strong></p><p>Say hi to get things started.</p></div>`;
+    }else{
+      msgsEl.innerHTML = list.map(m => `
+        <div class="msg-row ${m.author===session?'mine':''}">
+          <div class="avatar" style="${avatarStyle(m.author)}">${avatarHtml(m.author)}</div>
+          <div>
+            ${isGroup ? `<div class="msg-sender">${escapeHtml(m.author)}</div>` : ''}
+            <div class="msg-bubble">${escapeHtml(m.text)}</div>
+            <div class="msg-time">${shortTime(m.ts)}</div>
+          </div>
+        </div>`).join('');
+    }
+    msgsEl.scrollTop = msgsEl.scrollHeight;
+
+    const input = $('#chatMsgInput'), sendBtn = $('#chatSendBtn');
+    input.addEventListener('input', () => { sendBtn.disabled = input.value.trim().length===0; });
+    $('#chatComposerForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const text = input.value.trim();
+      if(!text) return;
+      if(!messages[cid]) messages[cid] = [];
+      messages[cid].push({ id: uid('m'), author: session, text, ts: Date.now() });
+      save(K_MESSAGES, messages);
+      input.value=''; sendBtn.disabled = true;
+      renderChatMain(cid);
+      renderChatsList();
+    });
+
+    const backBtn = $('#backToListBtn');
+    if(window.matchMedia('(max-width:700px)').matches){ backBtn.style.display='flex'; }
+    backBtn.addEventListener('click', () => {
+      document.documentElement.style.setProperty('--chats-list-display','flex');
+      document.documentElement.style.setProperty('--chat-main-display','none');
+    });
+
+    if(isGroup){
+      const openSettings = () => openGcSettingsModal(cid);
+      const gcBtn = $('#gcSettingsBtn');
+      if(gcBtn) gcBtn.addEventListener('click', openSettings);
+      const titleWrap = $('#chatMainTitleWrap');
+      if(titleWrap) titleWrap.addEventListener('click', openSettings);
+    }
+  }
+
+  /* --- New group chat modal --- */
+  const newGcModal = $('#newGcModal');
+  $('#newGcBtn').addEventListener('click', () => {
+    $('#gcNameInput').value = '';
+    $('#gcError').classList.remove('show');
+    const others = Object.values(users).map(u=>u.display).filter(d => d !== session);
+    $('#gcMemberPicker').innerHTML = others.length
+      ? others.map(name => `
+        <div class="member-pick-row">
+          <input type="checkbox" id="pick-${escapeHtml(name)}" value="${escapeHtml(name)}">
+          <label for="pick-${escapeHtml(name)}">${escapeHtml(name)}</label>
+        </div>`).join('')
+      : `<p class="no-upcoming">No other members to add yet.</p>`;
+    newGcModal.classList.add('show');
+  });
+  $('#cancelGcBtn').addEventListener('click', () => newGcModal.classList.remove('show'));
+  newGcModal.addEventListener('click', (e) => { if(e.target===newGcModal) newGcModal.classList.remove('show'); });
+  $('#createGcBtn').addEventListener('click', () => {
+    const name = $('#gcNameInput').value.trim();
+    const picked = $$('#gcMemberPicker input[type=checkbox]:checked').map(cb => cb.value);
+    if(!name){ const err=$('#gcError'); err.textContent='Give the group a name.'; err.classList.add('show'); return; }
+    if(picked.length === 0){ const err=$('#gcError'); err.textContent='Add at least one other person.'; err.classList.add('show'); return; }
+    const id = uid('c');
+    chats[id] = { id, type:'group', name, photo:null, members:[session, ...picked], createdBy: session, ts: Date.now() };
+    save(K_CHATS, chats);
+    newGcModal.classList.remove('show');
+    renderChatsList();
+    openChat(id);
+  });
+
+  /* --- Group chat settings modal (rename, photo, delete) --- */
+  const gcSettingsModal = $('#gcSettingsModal');
+  const gcPhotoInput = $('#gcPhotoInput');
+  let gcSettingsCid = null;
+
+  function refreshGcSettingsPreview(){
+    const chat = chats[gcSettingsCid];
+    const box = $('#gcSettingsAvatarPreview');
+    if(chat.photo){
+      box.style.cssText = '';
+      box.innerHTML = `<img src="${chat.photo}" alt="${escapeHtml(chat.name)}">`;
+    }else{
+      box.style.cssText = `background:${colorFor(chat.name)}`;
+      box.innerHTML = escapeHtml(chat.name.slice(0,2).toUpperCase());
+    }
+  }
+
+  function openGcSettingsModal(cid){
+    gcSettingsCid = cid;
+    const chat = chats[cid];
+    $('#gcRenameInput').value = chat.name;
+    $('#gcSettingsError').classList.remove('show');
+    refreshGcSettingsPreview();
+    $('#gcSettingsAvatarRow').classList.remove('is-editing');
+    bindAvatarEditToggle('gcSettingsAvatarRow');
+    gcSettingsModal.classList.add('show');
+  }
+  $('#cancelGcSettingsBtn').addEventListener('click', () => gcSettingsModal.classList.remove('show'));
+  gcSettingsModal.addEventListener('click', (e) => { if(e.target===gcSettingsModal) gcSettingsModal.classList.remove('show'); });
+
+  $('#changeGcPhotoBtn').addEventListener('click', () => gcPhotoInput.click());
+  gcPhotoInput.addEventListener('change', () => {
+    const file = gcPhotoInput.files[0];
+    if(!file || !gcSettingsCid) return;
+    compressImage(file, 400, 0.8).then(dataUrl => {
+      chats[gcSettingsCid].photo = dataUrl;
+      save(K_CHATS, chats);
+      refreshGcSettingsPreview();
+      renderChatsList();
+    }).catch(() => showTransientNotice('Could not read that photo — try another one.'));
+    gcPhotoInput.value = '';
+  });
+  $('#removeGcPhotoBtn').addEventListener('click', () => {
+    if(!gcSettingsCid) return;
+    chats[gcSettingsCid].photo = null;
+    save(K_CHATS, chats);
+    refreshGcSettingsPreview();
+    renderChatsList();
+  });
+
+  $('#saveGcSettingsBtn').addEventListener('click', () => {
+    const name = $('#gcRenameInput').value.trim();
+    if(!name){ const err=$('#gcSettingsError'); err.textContent='Give the group a name.'; err.classList.add('show'); return; }
+    chats[gcSettingsCid].name = name;
+    save(K_CHATS, chats);
+    gcSettingsModal.classList.remove('show');
+    renderChatsList();
+  });
+
+  $('#deleteGcFromSettingsBtn').addEventListener('click', () => {
+    gcSettingsModal.classList.remove('show');
+    openDeleteGcModal(gcSettingsCid);
+  });
+
+  /* --- Delete group chat modal --- */
+  const deleteGcModal = $('#deleteGcModal');
+  let gcPendingDelete = null;
+  function openDeleteGcModal(cid){
+    gcPendingDelete = cid;
+    $('#deleteGcText').textContent = `This removes "${chats[cid].name}" and all its messages for everyone. It can't be undone.`;
+    deleteGcModal.classList.add('show');
+  }
+  $('#cancelDeleteGcBtn').addEventListener('click', () => deleteGcModal.classList.remove('show'));
+  deleteGcModal.addEventListener('click', (e) => { if(e.target===deleteGcModal) deleteGcModal.classList.remove('show'); });
+  $('#confirmDeleteGcBtn').addEventListener('click', () => {
+    if(gcPendingDelete){
+      delete chats[gcPendingDelete];
+      delete messages[gcPendingDelete];
+      save(K_CHATS, chats); save(K_MESSAGES, messages);
+      if(activeChatId === gcPendingDelete) activeChatId = null;
+    }
+    deleteGcModal.classList.remove('show');
+    renderChatsList();
+  });
+
+  /* ================= INIT ================= */
+  if(session && users[session.toLowerCase()]){
+    enterApp();
+  }else{
+    session = null;
+    loginWrap.style.display = 'flex';
+  }
+})();
+</script>
+</body>
+</html>
